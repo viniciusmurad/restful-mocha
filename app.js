@@ -1,18 +1,20 @@
 var express = require('express');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+
+var db = mongoose.connect('localhost/restful');
+
+var Curso = require('./models/cursoModel');
 var app = express();
 
 var port = process.env.PORT || 3000;
 
-var frutasRouter = express.Router();
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json());
 
-frutasRouter.route('/Frutas')
-	.get(function(req, res){
-		var responseJson = {hello: 'testando api'};
-		res.json(responseJson);
-	});
-
-
-app.use('/api', frutasRouter);
+cursoRouter = require('./routes/cursoRoutes')(Curso);
+app.use('/api/cursos', cursoRouter);
+app.use('/api/autor', autorRouter);
 
 app.get('/', function(req,res) {
 	res.send('testando api');
@@ -21,3 +23,4 @@ app.get('/', function(req,res) {
 app.listen(port, function() {
 	console.log('servidor iniciado');
 })
+

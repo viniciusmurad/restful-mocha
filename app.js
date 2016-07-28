@@ -2,7 +2,14 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
-var db = mongoose.connect('localhost/restful');
+var db;
+if(process.env.ENV == 'Test') {
+	db = mongoose.connect('localhost/restful_test');
+}
+else {
+	db = mongoose.connect('localhost/restful');
+} 
+
 
 var Curso = require('./models/cursoModel');
 var app = express();
@@ -14,7 +21,6 @@ app.use(bodyParser.json());
 
 cursoRouter = require('./routes/cursoRoutes')(Curso);
 app.use('/api/cursos', cursoRouter);
-// app.use('/api/autor', autorRouter);
 
 app.get('/', function(req,res) {
 	res.send('testando api');
@@ -24,3 +30,4 @@ app.listen(port, function() {
 	console.log('servidor iniciado');
 })
 
+module.exports = app;

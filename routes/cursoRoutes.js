@@ -53,25 +53,15 @@ cursoRouter.route('/:id')
 		})
 	})
 	.delete(function(req, res) {
-
-		Curso.findOneAndRemove({
-		_id: req.params.id
-	}, function(err, result) {
+		Curso.findOneAndRemove({_id: req.params.id}, function(err, result) {
 		if(err) {
 			console.log(err);
 		} else {
 			console.log(result);
-			res.status(204);
+			res.sendStatus(204);
 		}
 	})
-		// req.book.remove(function(err) {
-		// 	if(err) {
-		// 		res.status(500).send(err);
-		// 	} else {
-		// 		res.status(204).send('removido');
-		// 	}
-		// });
-	});
+});
 
 	return cursoRouter;
 }

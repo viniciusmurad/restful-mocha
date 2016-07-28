@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 cursoRouter = require('./routes/cursoRoutes')(Curso);
 app.use('/api/cursos', cursoRouter);
-app.use('/api/autor', autorRouter);
+// app.use('/api/autor', autorRouter);
 
 app.get('/', function(req,res) {
 	res.send('testando api');

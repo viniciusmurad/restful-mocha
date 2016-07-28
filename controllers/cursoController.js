@@ -2,8 +2,15 @@ var cursoController = function(Curso) {
 
 	var post = function(req,res){
 		var curso = new Curso(req.body);
-		curso.save();
-		res.status(201).send(book);
+
+		if(!req.body.titulo) {
+			res.status(400);
+			res.send('Titulo requerido');
+		} else {
+			curso.save();
+			res.status(201);
+			res.send(curso);
+		}
 	}
 
 	var get = function(req, res){

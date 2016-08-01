@@ -1,4 +1,4 @@
-# restful-mocha
+# restful-nodejs
 
 Clone the project using
 

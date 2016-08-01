@@ -11,3 +11,8 @@ Install dependencies using:
 Run server using:
 
 ``` gulp ```
+
+Run server using:
+
+``` gulp test ```
+

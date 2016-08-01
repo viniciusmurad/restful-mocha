@@ -12,7 +12,7 @@ Run server using:
 
 ``` gulp ```
 
-Run server using:
+Run mocha using:
 
 ``` gulp test ```
 
